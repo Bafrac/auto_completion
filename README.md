@@ -1,15 +1,48 @@
 # Auto-Compléteur
 
-## Utilisation 
+Ce programme est une API back-end complétant le début de mot donné en entrée.
+Il lance un server HTTP et attend une requête et retourne une liste de mots contenant la chaine donnée.
+
+## Prérequis
+
+- Python ≥ 3.10
+
+
+# Structure du projet
+
+├── main.py # Point d’entrée du serveur HTTP
+├── handler.py # Gestion des requêtes HTTP / logique API
+├── createdictionary.py # Chargement du dictionnaire en mémoire
+├── Dictionnarys/
+│ ├── Dictionnary.txt
+│ ├── Dictionnary_star_wars.txt
+│ ├── Dictionnary_westeros.txt
+│ ├── Dictionnary_star_trek.txt
+│ └── Dictionnary_star_harry_potter.txt
+└── README.md
+
+## Lancement 
 ```bash
 python3 main.py
 ```
 
+# API
+```bash
+GET /autocomplete
+```
+
+### Paramètres
+query   string
+limit   int         optionnel
+
+## Exemple d'utilisation
 ```bash
 curl "http://127.0.0.1:8000/autocomplete?query=cr"
 curl "http://127.0.0.1:8000/autocomplete?query=rar"
-
-# change number of returned element
 curl "http://127.0.0.1:8000/autocomplete?query=cry&limit=1"
 ```
 
+```bash
+ curl "http://127.0.0.1:8000/autocomplete?query=DE"
+["dead", "dead", "deadly", "deadly", "deal"]
+```

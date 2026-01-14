@@ -17,7 +17,6 @@ def autocomplete(query: str, limit: int, dictionary: list ):
 
     matches.sort(key=str.lower)
 
-    # Limitation du nombre de résultats
     return matches[:limit]
 
 

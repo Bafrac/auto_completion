@@ -1,5 +1,5 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlparse, parse_qs
+from http.server import HTTPServer
+
 
 from Dictionnary import createDictionnary
 from handler import make_handler
@@ -8,9 +8,11 @@ from handler import make_handler
 def main(server_class=HTTPServer, port=8000):
     DICTIONARY = createDictionnary()
     handler_class = make_handler(DICTIONARY)
+
     server_address = ("", port)
     httpd = server_class(server_address, handler_class)
     print(f"Server start on: {port}")
+
     httpd.serve_forever()
 
 
