@@ -1,0 +1,25 @@
+# Extensions d'architecture
+
+Outre l'exercice de programmation, comment aborderiez-vous (succinctement) les extensions suivantes :
+
+# Scénario 1 : on souhaite ajouter un front-end à notre application : quelle techno ? pourquoi ? à quoi faut-il penser ?
+
+Dans le cas d'un front-end un framework JavaScript mis régulièrement à jour me semble bon, je ne suis plus vraiment à jour sur les outils web mais je me repose souvent sur l'open source donc je reste sur la règle "si c'est open-source et a une communauté qui le met à jour, améliore et corrige les failles (CVE) rapidement, c'est un outil utilisable". Je pense que React ou Angular sont de bon candidats.  
+Ce sont les outils que je vois le plus dans le front web et qui a le plus de chances de trouver quelqu'un de compétent pour le mettre en place, gérer les erreurs.  
+Ces outils sont aussi adaptables pour des requêtes de différents types et peuvent prendre en compte les résultats du compléteur, protéger le back-end des entrées XSS et autres type d'attaque pas encore implémentés dans le back-end.
+
+# Scénario 2 : on souhaite sauvegarder les recherches faites par les utilisateurs pour pouvoir les analyser : quelle techno ? pourquoi ? à quoi faut-il penser / faire attention ?
+
+Pour la sauvegarde des recherches je pense principalement aux bases de données, elles sont faites pour ça et ont des outils adéquats pour ça. SQLite me semble un bon candidat car il s'agit de SQL, léger facile à mettre en place à petite échelle et à maintenir. SQLite ne pouvant pas gérer beaucoup de requêtes, il ne fonctionnera pas dans un environnement ouvert au public.  
+Si on cherche différents types de bases de données, le NoSQL est une possibilité, Elasticsearch et Logstash me semblent être un bon duo pour insérer, compresser et chercher dans les anciennes recherches avec une bonne efficacité. Je choisis ce duo pour le NoSQL car je n'ai pas assez étudié les autres outils de ce type et ne propose pas un outil que je ne connais pas assez. (Ici Kibana ne rentre pas dans la gestion de sauvegarde et ne me semble pas adéquat pour voir ses anciennes données, c'est possible mais si possible je préfère utiliser un outil qui est fait pour ça et Kibana est plus fait pour beaucoup de statistiques différentes comparé à ici simplement des logs).
+
+Dans ce à quoi il faut faire attention, dans quoi on met la base de données. Dans quels serveurs, où? Le cloud (je pense ici principalement AWS et Azure) est une possibilité afin de gagner du temps mais implique potentiellement d'autres problèmes comme les différentes lois, le coût le fait d'être dans leur écosystème.  
+Il faut également à ce que l'on met exactement dans la base de données, quel chiffrement pour les mots de passe utilisateur, comment l'accès à la base de données est géré (token, clé de chiffrement...) et le RGPD est-il respecté?
+
+# 
+
+# Scénario 3 : ton équipe reçoit un ticket d'un bug utilisateur : erreur 500 lorsque l'utilisateur rentre "coucou (sourire)" (l'emoji est important) : que
+
+# Faites-vous ? à quoi cela vous fait penser ?
+
+Je commence par regarder l’état du serveur, s'il a planté et quelles pourraient être les raisons (si des logs d’erreur HTTP ou logs applicatifs ne sont pas implémentés, on peut se rabattre sur des logs de la machine qui lance le service d’auto-complétion potentiellement). La présence de l’émoji me fait penser que la requête est en utf-8 et que dans ce cas, qu’aucune gestion des caractères autres que ASCII n’est mise en place, ce qui provoque une erreur une fois entré dans le serveur. Mettre en place des mécanismes de protection contre les différents caractères, vérifier que le contenu est simple pour éviter une injection de code.  
