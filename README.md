@@ -5,13 +5,13 @@ Il lance un server HTTP et attend une requête et retourne une liste de mots con
 
 ## Prérequis
 
-- Python ≥ 3.10
+- Python ≥ 3.12
 
 
 # Structure du projet
 
 ├── main.py # Point d’entrée du serveur HTTP
-├── handler.py # Gestion des requêtes HTTP / logique API
+├── handler.py # Gestion des requêtes HTTP
 ├── createdictionary.py # Chargement du dictionnaire en mémoire
 ├── Dictionnarys/
 │ ├── Dictionnary.txt
@@ -21,7 +21,14 @@ Il lance un server HTTP et attend une requête et retourne une liste de mots con
 │ └── Dictionnary_star_harry_potter.txt
 └── README.md
 
-## Lancement 
+# Lancement Docker
+
+```bash
+docker build -t autocomplete:latest .
+docker run -p 8000:8000 autocomplete
+```
+
+## Lancement local
 ```bash
 python3 main.py
 ```
