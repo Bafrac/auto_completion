@@ -1,0 +1,1 @@
+/home/thiba/completion/rust/completion/target/debug/completion: /home/thiba/completion/rust/completion/src/dictionary.rs /home/thiba/completion/rust/completion/src/handler.rs /home/thiba/completion/rust/completion/src/main.rs

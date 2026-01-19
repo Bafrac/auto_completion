@@ -3,7 +3,7 @@ from urllib.parse import urlparse, parse_qs
 
 import json
 
-# autocomplete search in dictionnary and add to a result
+# autocomplete search in dictionary and add to a result
 # return à list
 def autocomplete(query: str, limit: int, dictionary: list ):
     if not query:
@@ -20,7 +20,12 @@ def autocomplete(query: str, limit: int, dictionary: list ):
     return matches[:limit]
 
 
-# make_handler allow passing the dictionnary between files
+
+
+
+
+
+# make_handler allow passing the dictionary between files
 # return HTTP response to user 
 def make_handler(dictionary):
     class AutoCompleteHandler(BaseHTTPRequestHandler):
