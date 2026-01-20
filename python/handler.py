@@ -8,16 +8,22 @@ import json
 def autocomplete(query: str, limit: int, dictionary: list ):
     if not query:
         return []
+    
     query = query.lower()
+    results = []
+    started = False
 
-    matches = [
-        term for term in dictionary
-        if term.lower().startswith(query)
-    ]
+    for term in dictionary:
+        term_lower = term.lower()
 
-    matches.sort(key=str.lower)
-
-    return matches[:limit]
+        if term_lower.startswith(query):
+            started = True
+            results.append(term)
+            if len(results) == limit:
+                break
+        elif started:
+            break
+    return results
 
 
 # make_handler allow passing the dictionary between files
