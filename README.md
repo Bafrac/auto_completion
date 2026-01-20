@@ -13,12 +13,12 @@ Il lance un server HTTP et attend une requête et retourne une liste de mots con
 ├── main.py # Point d’entrée du serveur HTTP
 ├── handler.py # Gestion des requêtes HTTP
 ├── createdictionary.py # Chargement du dictionnaire en mémoire
-├── Dictionnarys/
-│ ├── Dictionnary.txt
-│ ├── Dictionnary_star_wars.txt
-│ ├── Dictionnary_westeros.txt
-│ ├── Dictionnary_star_trek.txt
-│ └── Dictionnary_star_harry_potter.txt
+├── dictionarys/
+│ ├── dictionary.txt
+│ ├── dictionary_star_wars.txt
+│ ├── dictionary_westeros.txt
+│ ├── dictionary_star_trek.txt
+│ └── dictionary_star_harry_potter.txt
 └── README.md
 
 # Lancement Docker

@@ -3,8 +3,7 @@ use std::io::{BufRead, BufReader};
 
 pub fn create_dictionary() -> Vec<String>
 {   
-    // Pas idéal ici
-    let dict_path = "../../../Dictionnarys/Dictionnary.txt";
+    let dict_path = "/app/Dictionarys/Dictionary_harry_potter.txt";
 
     let mut dictionary = Vec::new();
 
@@ -17,7 +16,6 @@ pub fn create_dictionary() -> Vec<String>
             {
                 if let Ok(line) = line
                 {
-                    println!("{}", line);
                     let trimmed = line.trim();
                     if !trimmed.is_empty()
                     {

@@ -13,14 +13,14 @@ fn main() {
     println!("Hello, world!");
 
     let port = 8000;
-    let address = format!("127.0.0.1:{}", port);
+    let address = format!("0.0.0.0:{}", port);
 
     let dictionary = Arc::new(create_dictionary());
 
     let listener = TcpListener::bind(&address)
         .expect("failed to bind port");
     
-    println!("server started on {}", port);
+    println!("RUST: server started on {}", port);
 
     for stream in listener.incoming()
     {

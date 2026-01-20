@@ -5,24 +5,22 @@ import json
 
 # autocomplete search in dictionary and add to a result
 # return à list
-def autocomplete(query: str, limit: int, dictionary: list ):
+def autocomplete(query: str, limit: int, dictionary: list):
     if not query:
         return []
     
+    print("limit: ", limit)
+    
     query = query.lower()
     results = []
-    started = False
-
+    
     for term in dictionary:
         term_lower = term.lower()
-
         if term_lower.startswith(query):
-            started = True
             results.append(term)
             if len(results) == limit:
-                break
-        elif started:
-            break
+                break  # Arrête seulement quand tu as assez de résultats
+    
     return results
 
 
